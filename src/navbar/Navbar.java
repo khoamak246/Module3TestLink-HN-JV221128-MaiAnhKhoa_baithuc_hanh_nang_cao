@@ -2,7 +2,6 @@ package navbar;
 
 import model.Student;
 
-import java.util.LinkedList;
 import java.util.Scanner;
 
 import static view.StudentView.*;
@@ -10,14 +9,15 @@ import static view.StudentView.*;
 public class Navbar {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        LinkedList<Student> studentList = new LinkedList<>();
+//        LinkedList<Student> studentList = new LinkedList<>();
+        Student[] studentList = new Student[1];
         while (true) {
             printMenu();
             int selectOption = Integer.parseInt(sc.nextLine());
             if (selectOption != 6) {
                 switch (selectOption) {
                     case 1:
-                        if (studentList.size() != 0) {
+                        if (studentList[0] != null) {
                             showListStudent(studentList);
                         } else {
                             System.out.println("Chua co thong tin hoc sinh nao ca");
@@ -25,25 +25,25 @@ public class Navbar {
                         }
                         break;
                     case 2:
-                        inputStudent(studentList);
+                        studentList = inputStudent(studentList);
                         break;
                     case 3:
-                        if (studentList.size() != 0) {
+                        if (studentList[0] != null) {
                             updateStudent(studentList);
                         } else {
                             System.out.println("Chua co hoc sinh nao ca");
                         }
                         break;
                     case 4:
-                        if (studentList.size() != 0) {
-                            removeStudent(studentList);
+                        if (studentList[0] != null) {
+                            studentList = removeStudent(studentList);
                         } else {
                             System.out.println("Chua co hoc sinh nao ca");
                         }
                         break;
                     case 5:
-                        if (studentList.size() != 0) {
-                            sortStudent(studentList);
+                        if (studentList[0] != null) {
+                            studentList = sortStudent(studentList);
                         } else {
                             System.out.println("Chua co hoc sinh nao ca");
                         }
